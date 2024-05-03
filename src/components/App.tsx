@@ -1,13 +1,13 @@
 import { useEffect, useState, useRef} from "react";
-import SearchBar from './SearchBar/SearchBar.jsx';
-import Loader from "./Loader/Loader.jsx";
-import ErrorMessage from "./ErrorMessage/ErrorMessage.jsx";
-import ImageGallery from "./ImageGallery/ImageGallery.jsx";
-import { fetchPhotosByInput } from "../photos-api.js";
-import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn.jsx";
-import ImageModal from "./ImageModal/ImageModal.jsx";
+import SearchBar from './SearchBar/SearchBar';
+import Loader from "./Loader/Loader";
+import ErrorMessage from "./ErrorMessage/ErrorMessage";
+import ImageGallery from "./ImageGallery/ImageGallery";
+import { fetchPhotosByInput } from "../photos-api";
+import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "./ImageModal/ImageModal";
 import ScrollIntoView from 'react-scroll-into-view'
-import ScrollUp from "./ScrollUp/ScrollUp.jsx";
+import ScrollUp from "./ScrollUp/ScrollUp";
 
 
 const App = () => {
