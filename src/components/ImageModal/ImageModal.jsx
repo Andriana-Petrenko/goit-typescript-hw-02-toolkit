@@ -1,4 +1,4 @@
-import  "./ImageModal.module.css"
+
 import Modal from 'react-modal'
 import css from './ImageModal.module.css'
 
@@ -11,24 +11,24 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         border:'none',
-        backgroundColor:'transparent'
+    backgroundColor: 'transparent',
     },
 };
 
 Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.871)';
-const ImageModal = ({onClose, urlModal,isOpen,description}) => {
+const ImageModal = ({ photo, setOpenModal }) => {
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+  
   return (
-    <Modal
-        isOpen={isOpen}
-        onRequestClose={onClose}
-        style={customStyles}  
-    >
-        <img className={css.modal_image} src={urlModal} alt={description} />
+    <Modal  isOpen={true} onRequestClose={handleCloseModal} style={customStyles}>
+        <img className={css.modal_image} src={photo.urls.small} alt={photo.alt_description} />
     </Modal>
   )
 }
-
 export default ImageModal
 
 

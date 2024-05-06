@@ -1,8 +1,14 @@
 import toast, { Toaster } from 'react-hot-toast'
 import css from "./SearchBar.module.css"
 import { FaSearch } from "react-icons/fa"
-const SearchBar = ({ onSubmit }) => {
-    
+import { useDispatch } from 'react-redux';
+
+import { changeFilter } from '../../redux/filterSlice';
+import { changePage,changeItems } from '../../redux/photoSlice';
+
+
+const SearchBar = () => {
+    const dispatch = useDispatch();
 const handleOnSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -16,8 +22,11 @@ const handleOnSubmit = (event) => {
                   },
               });
               return;
-          }
-    onSubmit(inputSearch); 
+  }
+  
+  dispatch(changeFilter(inputSearch));
+  dispatch(changePage(1));
+  dispatch(changeItems([]));
   }
 
   return (
