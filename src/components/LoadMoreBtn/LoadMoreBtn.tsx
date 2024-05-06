@@ -2,18 +2,20 @@ import { useDispatch, useSelector } from "react-redux";
 import css from "./LoadMoreBtn.module.css"
 import { selectPage } from "../../redux/selectors";
 import { changePage } from "../../redux/photoSlice";
+import { FC } from "react";
+import { AppDispatch } from "../../redux/store";
 
 
-const LoadMoreBtn = () => {
-    const dispatch = useDispatch();
+const LoadMoreBtn:FC = () => {
+    const dispatch = useDispatch<AppDispatch>();
     const currentPage = useSelector(selectPage);
 
-    const onLoadMore = () => {
+    const handleLoadMore = (): void => {
         dispatch(changePage(currentPage + 1));
     }
     return (
         <>
-            <button type="button" id="load_btn"  className={css.load_more_btn} onClick={onLoadMore}>Load more</button>
+            <button type="button" id="load_btn"  className={css.load_more_btn} onClick={handleLoadMore}>Load more</button>
             
         </>
         

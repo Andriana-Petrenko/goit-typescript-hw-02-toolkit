@@ -6,14 +6,14 @@ import ScrollIntoView from 'react-scroll-into-view'
 import ScrollUp from "../ScrollUp/ScrollUp";
 import css from "./ImageGallery.module.css"
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, FC} from "react";
 
-const ImageGallery = () => {
-  const lastImageRef = useRef(null);
+const ImageGallery: FC  = () => {
+  const lastImageRef = useRef<HTMLLIElement | null>(null);
   const scrollBtn = useSelector(selectScrollButton);
   const photos = useSelector(selectPhotos);
   const loadButton = useSelector(selectLoadButton);
-  useEffect(() => {
+  useEffect(():void | (() => void) => {
     if (lastImageRef.current) {
       lastImageRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }

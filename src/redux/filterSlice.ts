@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { INITIAL_STATE } from "./photoSlice";
 
 const filterSlice = createSlice({
   name: 'filters',
   initialState: INITIAL_STATE.filters,
 reducers: {
-      changeFilter(state, action) {
+      changeFilter(state, action:PayloadAction<string>) {
            state.name = action.payload;
    }
 

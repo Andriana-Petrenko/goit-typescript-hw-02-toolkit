@@ -1,6 +1,8 @@
 
 import Modal from 'react-modal'
 import css from './ImageModal.module.css'
+import { FC } from 'react';
+import { Photo } from "../../redux/photoSlice";
 
 const customStyles = {
     content: {
@@ -15,9 +17,16 @@ const customStyles = {
     },
 };
 
+interface ImageModalProps{
+  photo:Photo;
+  setOpenModal:(isOpen: boolean) => void;
+}
+
 Modal.setAppElement('#root');
+Modal.defaultStyles.overlay = Modal.defaultStyles.overlay || {};
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.871)';
-const ImageModal = ({ photo, setOpenModal }) => {
+
+const ImageModal: FC<ImageModalProps>  = ({ photo, setOpenModal }) => {
 
   const handleCloseModal = () => {
     setOpenModal(false);

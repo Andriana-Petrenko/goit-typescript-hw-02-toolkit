@@ -2,18 +2,19 @@ import toast, { Toaster } from 'react-hot-toast'
 import css from "./SearchBar.module.css"
 import { FaSearch } from "react-icons/fa"
 import { useDispatch } from 'react-redux';
-
 import { changeFilter } from '../../redux/filterSlice';
 import { changePage,changeItems } from '../../redux/photoSlice';
+import { FormEvent, FC } from 'react';
+import { AppDispatch } from '../../redux/store';
 
 
-const SearchBar = () => {
-    const dispatch = useDispatch();
-const handleOnSubmit = (event) => {
+const SearchBar: FC  = () => {
+    const dispatch = useDispatch<AppDispatch>();
+const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.target;
-    const inputSearch = form.elements.search.value;
-          if (inputSearch.trim() === "") {
+    const form = event.target  as HTMLFormElement;;
+    const inputSearch = (form.querySelector<HTMLInputElement>('input[name="search"]') || {}).value;
+          if (!inputSearch || inputSearch.trim() === "") {
               toast('Please enter search term!', {
                   style: {
                       borderRadius: '10px',
