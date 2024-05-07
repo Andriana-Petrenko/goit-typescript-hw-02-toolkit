@@ -1,4 +1,4 @@
-// import { createSelector } from "@reduxjs/toolkit";
+
 import { RootState } from "./store";
 
 export const selectPhotos = (state:RootState) => state.photos.items;

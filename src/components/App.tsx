@@ -8,11 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectError, selectLoading, selectNameFilter, selectPage, selectPhotos} from "../redux/selectors";
 import { fetchPhotos } from "../redux/operations";
 
-const App: FC  = () => {
+const App: FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const photos = useSelector(selectPhotos);
-  const dispatch = useDispatch<AppDispatch>();
   const inputSearch = useSelector(selectNameFilter);
   const currentPage = useSelector(selectPage);
   useEffect((): void | (() => void) => {

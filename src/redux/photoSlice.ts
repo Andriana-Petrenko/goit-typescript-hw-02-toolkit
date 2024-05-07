@@ -1,6 +1,6 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
 import { fetchPhotos } from "./operations";
-
+import {PhotoData} from "./operations"
 
  export interface Photo {
    id: string;
@@ -73,11 +73,11 @@ const photoSlice = createSlice({
   state.loading = true;
   state.error = false;
 } )
-      .addCase(fetchPhotos.rejected, (state, action) => {
+      .addCase(fetchPhotos.rejected, (state) => {
         state.loading = false;
         state.error = true;
 })
-      .addCase(fetchPhotos.fulfilled, (state, action) => {
+      .addCase(fetchPhotos.fulfilled, (state, action:PayloadAction<PhotoData>) => {
         state.loading = false;
         state.items = [...state.items, ...action.payload.results];
         state.loadButton = true;
